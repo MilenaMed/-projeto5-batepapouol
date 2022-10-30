@@ -17,50 +17,35 @@
 <body>
     <header>
         <img class="logo" src="imagens/logo.jpg" />
-        <ion-icon onclick="perfiltoggle(this)" name="people-outline" class="icone"></ion-icon>
+        <ion-icon onclick="toggleperfil(this)" name="people-outline" class="icone"></ion-icon>
     </header>
     <!--  FIM DO CABEÇARIO -->
-
-    <!-- CAIXAS DE DIALOGO -->
-    <!-- <div class="conteiner">
-        <div class="entrou">
-            <p class="horario">(hh:hh:hh)</p> <p class="usuario">Pessoa</p>entrou na sala...
-        </div>
-        <div class="dialogo">
-            <p class="horario">(hh:hh:hh)</p> <p class="usuario">Pessoa</p>para <p class="usuario">Pessoa</p>: TEXTO
-        </div>
-        <div class="mensagemprivada">
-            <p class="horario">(hh:hh:hh)</p> <p class="usuario">Pessoa</p>para <p class="usuario">Pessoa</p>: TEXTO
-        </div>
-    </div> -->
-
     <!-- INICIO DO RODAPÉ -->
     <footer>
         <div>
         <input type="text" size="35" value="Escreva aqui..." class="texto" />
-        <p class="reservado">
+        <p class="reservado desativar">
             Mandar mensagem para PESSOA (reservado)
         </p>
-    </div>
+        </div>
         <ion-icon onclick="mensagem(this)" name="paper-plane-outline" class="icone"></ion-icon>
     </footer>
-    <div class="opacidade">
-
-    </div>
     <!-- SIDE BAR -->
-    <aside>
+    <div onclick="togglesair(this)" class="opacidade desativar">
+    </div>
+    <aside class="desativar">
         <h1>
         Escolha um contato para mandar mensagem:
         </h1>
         <div  class="todos">
             <ion-icon name="person" class="iconeMenor"></ion-icon>
             Todos
-            <ion-icon name="checkmark-outline" class="selecionar"></ion-icon>
+            <ion-icon name="checkmark-outline" class="selecionar desativar"></ion-icon>
         </div>
         <div  class="pessoa">
             <ion-icon name="person-circle" class="iconeMenor"></ion-icon>
             Nome da Pessoa
-            <ion-icon name="checkmark-outline" class="selecionar"></ion-icon>
+            <ion-icon name="checkmark-outline" class="selecionar desativar"></ion-icon>
         </div>
         <h1>
         Escolha a visibilidade:
@@ -68,18 +53,32 @@
         <div  class="público">
             <ion-icon name="lock-open" class="iconeMenor"></ion-icon>
             Público
-            <ion-icon name="checkmark-outline" class="selecionar"></ion-icon>
-        </div>
+            <div class="selecionado">
+                <ion-icon name="checkmark-outline" class="selecionar desativar"></ion-icon>
+                </div> 
+            </div>
         <div  class="privado">
             <ion-icon name="lock-closed" class="iconeMenor"></ion-icon>
             Reservado
-            <ion-icon name="checkmark-outline" class="selecionar"></ion-icon>
+            <div class="selecionado">
+            <ion-icon name="checkmark-outline" class="selecionar desativar"></ion-icon>
+            </div>
         </div>
     </aside>
-    <!-- FIM DA SIDE BAR -->
+
+    <!-- CAIXAS DE DIALOGO -->
+    <ul class="conteiner">
+         <!-- <li id="mensagem" class="dialogo"> -->
+            <!-- <p class="horario">(hh:hh:hh)</p> <p class="usuario">Pessoa</p>para <p class="usuario">Pessoa</p>: TEXTO
+        </li> -->
+        <!-- <li id="privada" class="mensagemprivada">
+            <p class="horario">(hh:hh:hh)</p> <p class="usuario">Pessoa</p>para <p class="usuario">Pessoa:</p> texto
+        </li>  -->
+    </ul> 
 
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js">
 </script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="funções.js">
 </script>
 </body >
