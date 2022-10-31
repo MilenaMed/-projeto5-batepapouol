@@ -31,8 +31,6 @@ promessa1.catch(tratarErro);
 // VERIFICAR SE CONTINUA ONLINE
 
 function veririfique_status(){ 
-    console.log("executou");
-
     const promessa2 = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", name);
         promessa2.catch(tratarErro1);
 
@@ -46,23 +44,33 @@ function veririfique_status(){
         saida.innerHTML += saiu;
     }
 }
-
 // PEGAR MENSAGENS
-// const promessa3 = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages");
-// promessa3.then(tratarSucesso2); 
-// promessa3.catch(tratarErro2);
 
-// function tratarSucesso2(resposta) { 
-//     mensagens = document.querySelector("ul")
-// if ()
+const promessa3 = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages");
+promessa3.then(tratarSucesso2, 3000); 
+let mensagens = [];
 
-//     mensagens.innerHTML += mensagem;
-// }
+function tratarSucesso2(resposta) {
+mensagens = resposta.data;
+mensagens.forEach((mensagem)=>{ 
 
-// function tratarErro2(erro) {
-//    const saiu = 
-//    `<li id="login" class="entrou">
-//        <p class="horario">(${data})</p> <p class="usuario">${nome}</p>saiu na sala...
-//    </li>
-// `
-// }
+    if(mensagem.type == "status"){
+    saidaeentrada = document.querySelector("ul")
+
+    const entrouounão =
+    `<li id="login" class="entrou">
+    <p class="horario">(${mensagem.time})</p> <p class="usuario">${mensagem.from}</p>${mensagem.text}
+   </li>
+   `
+   saidaeentrada.innerHTML += entrouounão;
+    }
+    else if(mensagens.type == "message"){
+    const mensagem =
+    `<li id="mensagem" class="dialogo">
+    <p class="horario">(${mensagem.time})</p> <p class="usuario">${mensagem.from}</p>para <p class="usuario"> todos </p>: ${text}
+    </li> 
+   `
+     mensagens.innerHTML += mensagem;
+    }
+});
+}
